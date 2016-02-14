@@ -67,9 +67,8 @@ var TypeaheadSelector = React.createClass({
       );
     }, this);
 
-
     return (
-      <ul className={classList}>
+      <ul style={{maxHeight: this.props.optionsMaxHeight || ''}} className={classList}>
         { customValue }
         { results }
       </ul>

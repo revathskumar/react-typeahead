@@ -30,6 +30,7 @@ var Typeahead = React.createClass({
     defaultValue: React.PropTypes.string,
     value: React.PropTypes.string,
     placeholder: React.PropTypes.string,
+    optionsMaxHeight: React.PropTypes.string,
     textarea: React.PropTypes.bool,
     openOnFocus: React.PropTypes.bool,
     inputProps: React.PropTypes.object,
@@ -66,6 +67,7 @@ var Typeahead = React.createClass({
       defaultValue: "",
       value: null,
       placeholder: "",
+      optionsMaxHeight: "",
       textarea: false,
       openOnFocus: false,
       inputProps: {},
@@ -151,6 +153,7 @@ var Typeahead = React.createClass({
         customClasses={this.props.customClasses}
         selectionIndex={this.state.selectionIndex}
         defaultClassNames={this.props.defaultClassNames}
+        optionsMaxHeight={this.props.optionsMaxHeight}
         displayOption={this._generateOptionToStringFor(this.props.displayOption)} />
     );
   },
