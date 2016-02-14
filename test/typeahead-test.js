@@ -166,6 +166,29 @@ describe('Typeahead Component', function() {
       });
     });
 
+    context('optionMaxHeight', function() {
+      it('Set the height of dropdown', function() {
+        var component = TestUtils.renderIntoDocument(<Typeahead
+          options={ BEATLES }
+          optionsMaxHeight={"300px"}
+          ></Typeahead>);
+        var results = simulateTextInput(component, 'o');
+        // assert.equal(results.length, 1);
+      });
+    });
+
+    context('openOnFocus', function () {
+      it('show options on focus', function() {
+        // console.log(BEATLES);
+        var component = TestUtils.renderIntoDocument(<Typeahead
+          options={ BEATLES }
+          openOnFocus
+          ></Typeahead>);
+        var results = simulateTextInput(component, '');
+        assert.equal(results.length, 4);
+      });
+    })
+
     context('displayOption', function() {
       it('renders simple options verbatim when not specified', function() {
         var component = TestUtils.renderIntoDocument(<Typeahead

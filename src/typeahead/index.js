@@ -31,6 +31,7 @@ var Typeahead = React.createClass({
     value: React.PropTypes.string,
     placeholder: React.PropTypes.string,
     textarea: React.PropTypes.bool,
+    openOnFocus: React.PropTypes.bool,
     inputProps: React.PropTypes.object,
     onOptionSelected: React.PropTypes.func,
     onChange: React.PropTypes.func,
@@ -66,6 +67,7 @@ var Typeahead = React.createClass({
       value: null,
       placeholder: "",
       textarea: false,
+      openOnFocus: false,
       inputProps: {},
       onOptionSelected: function(option) {},
       onChange: function(event) {},
@@ -96,7 +98,7 @@ var Typeahead = React.createClass({
   },
 
   getOptionsForValue: function(value, options) {
-    if (!SHOULD_SEARCH_VALUE(value)) { return []; }
+    if (!SHOULD_SEARCH_VALUE(value) && !this.props.openOnFocus) { return []; }
     var filterOptions = this._generateFilterFunction();
     var result = filterOptions(value, options);
     if (this.props.maxVisible) {
@@ -132,7 +134,7 @@ var Typeahead = React.createClass({
 
   _renderIncrementalSearchResults: function() {
     // Nothing has been entered into the textbox
-    if (!this.state.entryValue) {
+    if (!this.state.entryValue && !this.props.openOnFocus) {
       return "";
     }
 
